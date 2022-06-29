@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"https://www.w3.org/TR/xhtmll/DTD/xhtmll-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<h:form>
+	<h:outputLabel value="Terceira página de registro do FlowScoped " />
+	
+	<h:panelGrid columns="2">
+	
+		<h:outputLabel value="nome" />
+		<h:outputLabel value="#{testFlowBuilderBean.nome}" />
+		<h:outputLabel value="sobrenome" />
+		<h:outputLabel value="#{testFlowBuilderBean.sobrenome}" />
+		<h:outputLabel value="endereco" />
+		<h:outputLabel value="#{testFlowBuilderBean.endereco}" />
+		<h:commandButton action="registration2?faces-redirect=true" value="Back" />
+		<!-- <h:commandButton action="#{testFlowBean.salvar()}" value="Salvar" /> -->
+		<h:commandButton action="exitToInicio" value="Salvar To Inicio" />
+		
+	</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

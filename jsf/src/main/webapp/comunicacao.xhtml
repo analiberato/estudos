@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"https://www.w3.org/TR/xhtmll/DTD/xhtmll-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="1">
+			<h:outputText value="#{facesContext.externalContext.getInitParameter('images.location')}" />
+			<h:commandButton value="Imprimir" actionListener="#{testComunicacaoBean.imprimirAtributos()}" />
+		</h:panelGrid>
+	</h:form>
+
+	<h:form>
+		<h:panelGrid columns="1">
+			<h:inputText value="#{testComunicacaoBean.nome}" />
+			<h:inputText value="#{testComunicacaoBean.sobrenome}" />
+			<!-- <h:commandButton value="Save" action="#{testComunicacaoBean.save()}" /> -->
+			
+			<h:button value="Save" outcome="comunicacao2?faces-redirect=true">
+				<f:param name="nome" value="Ana"></f:param>
+				<f:param name="sobrenome" value="Liberato"></f:param>
+			</h:button>
+			
+			<h:link value="Vai pra comunicação 2" outcome="comunicacao2">
+				<f:param name="nome" value="Ana"></f:param>
+				<f:param name="sobrenome" value="Liberato"></f:param>		
+			</h:link>
+			
+			<h:link value="Vai pra comunicação 3" outcome="comunicacao3">
+				<f:param name="nome" value="Ana"></f:param>
+				<f:param name="sobrenome" value="Liberato"></f:param>		
+			</h:link>
+			
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"https://www.w3.org/TR/xhtmll/DTD/xhtmll-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+	<h:form>
+	<h:outputLabel value="Segunda página de registro do FlowScoped " />
+	
+	<h:panelGrid columns="2">
+		<h:outputLabel value="endereco" />
+		<h:outputText value="#{testFlowBuilderBean.endereco}" />
+		<h:commandButton action="registration?faces-redirect=true" value="Back" />
+		<!-- <h:commandButton action="registration3?faces-redirect=true" value="Next" /> -->
+		<h:commandButton action="callNewPendencies" value="Calidar pendencias" />
+	</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"https://www.w3.org/TR/xhtmll/DTD/xhtmll-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:o="http://omnifaces.org/ui"
+    xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<f:metadata>
+	<f:viewParam name="nome" value="#{testComunicacaoBean3.nome}"></f:viewParam>
+	<f:viewParam name="sobrenome" value="#{testComunicacaoBean3.sobrenome}"></f:viewParam>
+	<f:event type="preRenderView" listener="#{testComunicacaoBean3.init}"/>
+</f:metadata>
+<h:body>
+
+	<o:form includeRequestParams="true">
+	<p:messages autoUpdate="true"/>
+		<h:panelGrid columns="1">
+			<h:inputText value="#{testComunicacaoBean3.nome}" required="true" requiredMessage="O nome é obrigatório"/>
+				<f:ajax event="blur"/>
+			<h:inputText value="#{testComunicacaoBean3.sobrenome}" />
+			<!-- <h:commandButton value="Resultado" action="#{testComunicacaoBean3.save()}" /> -->
+			<f:viewAction action="#{testComunicacaoBean3.init}"/>
+		</h:panelGrid>
+	</o:form>
+
+</h:body>
+</html>

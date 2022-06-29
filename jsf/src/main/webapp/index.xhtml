@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"https://www.w3.org/TR/xhtmll/DTD/xhtmll-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+	<p:importEnum type="br.com.treinamentojsf.model.enums" var="Turno"
+                  allSuffix="ALL_ENUM_VALUES"/>
+	
+	<h:outputLabel value="#{estudanteRegistrarBean.estudante.nome}"/>
+	<h:outputLabel value="#{estudanteRegistrarBean.estudante['sobrenome']}"/>
+	
+	<h2>Hellooooo worldd</h2><br/>
+	<h:outputLabel value="Teste" /><br/>
+	<h:outputLabel value="Hello, world"/><br/>
+	<h:outputLabel value="#{estudanteRegistrarBean.estudante.nota1 eq estudanteRegistrarBean.estudante.nota2}"/><br/>
+	<h:outputLabel value="#{estudanteRegistrarBean.estudante.nota1 le estudanteRegistrarBean.estudante.nota2}"/><br/>
+	<h:outputLabel value="#{estudanteRegistrarBean.estudante.nota1 eq 0 ? 'ZERO' : 'NÃO ZERO'}"/><br/>
+	<h:outputLabel value="#{estudanteRegistrarBean.estudante.nota3}"/><br/>
+	
+	<h:outputText value="ENUMS" />
+	<h:outputLabel value="#{estudanteRegistrarBean.estudante.turno eq Turno.MATUTINO}"/><br/>
+	<h:outputLabel value="#{estudanteRegistrarBean.estudante.turno.equals(Turno.MATUTINO)}"/><br/>
+	
+	<!-- ARRAYS -->
+	<h:outputLabel value="#{estudanteRegistrarBean.nomesArray[0]} #{estudanteRegistrarBean.nomesArray[1]} #{estudanteRegistrarBean.nomesArray[2]}" />
+	<!-- ui: repeat array -->
+	<ui:repeat var="nome" value="#{estudanteRegistrarBean.nomesArray}">
+		<h:outputLabel value="#{nome}" />
+	</ui:repeat>
+	
+	<!-- LIST -->
+	<h:outputLabel value="#{estudanteRegistrarBean.nomesLista.get(0)} #{estudanteRegistrarBean.nomesLista.get(1)} #{estudanteRegistrarBean.nomesLista.get(2)}" />
+	<!-- ui: repeat list -->
+	<ui:repeat var="nome" value="#{estudanteRegistrarBean.nomesLista}">
+		<h:outputLabel value="#{nome}" />
+	</ui:repeat>
+	
+	#{estudanteRegistrarBean.executar()
+	
+	<h:form>
+		<h:commandButton actionListener="#{estudanteRegistrarBean.irParaIndex2()}" value="Ir para página" />
+		<h:commandButton onclick="fazMagica('Funcionou')" value="Soltar mágica" />
+		<h:commandButton onclick="#{estudanteRegistrarBean.estudante.nome}')" value="Alert nome" />
+	</h:form>
+	
+	<!-- Imprimindo Css com EL -->
+	<ui:repeat var="#{estudanteRegistrarBean.nomesLista}" value="nome" varStatus="status">
+		<h:outputLabel value="#{nome}" style="color: #{status.index mod 2 == 0 ? 'red' : 'green'}"/>
+	</ui:repeat>
+	
+	<h:form>
+		<h:commandButton value="Exibir Notas" />
+			<f:ajax render="notasGrid" listener="#{estudanteRegistrarBean.exibirNotas()}"/>
+		<br/>
+		
+		<h:panelGrid id="notasGrid">
+			<h:outputText value="#{estudanteRegistrarBean.estudante.nome}" />
+			<h:outputText value="#{estudanteRegistrarBean.estudante.sobrenome}" />
+			<h:outputText value="#{estudanteRegistrarBean.estudante.turno}" />
+			<h:outputText value="#{estudanteRegistrarBean.estudante.nota1}" rendered="##{estudanteRegistrarBean.mostrarNotas}"/>
+			<h:outputText value="#{estudanteRegistrarBean.estudante.nota2}" rendered="##{estudanteRegistrarBean.mostrarNotas}" />
+			<h:outputText value="#{estudanteRegistrarBean.estudante.nota3}" rendered="##{estudanteRegistrarBean.mostrarNotas}" />
+		</h:panelGrid>
+	</h:form>
+	
+	<!-- Lambdas -->
+	#{(soma -> soma + num)(10)}
+	#{((v1,v2,v3) -> v1*v2*v3) (1,5,10))}
+	
+</h:body>
+	<script type="text/javascript">
+		function fazMagica(magica){
+			alert(magica);
+			}
+
+		function alertNome(nome){
+			alert(nome);
+			}
+
+	</script>
+</html>
